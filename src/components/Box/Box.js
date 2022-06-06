@@ -2,8 +2,9 @@ import React from 'react';
 import './Box.css'
 
 const Box = (props) => {
+
     return (
-        <div className='box'>
+        <div onClick={props.eachBox} className={`${props.name}`}>
 
         </div>
     );
