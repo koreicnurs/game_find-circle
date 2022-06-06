@@ -15,7 +15,6 @@ const CreateObjArray = () => {
 
     const rand = Math.floor((Math.random() * objArrayBox.length));
     objArrayBox[rand].isItem = true;
-    console.log(rand);
     return objArrayBox;
 };
 

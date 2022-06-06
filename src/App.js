@@ -1,5 +1,4 @@
 import './App.css';
-import Box from "./components/Box/Box";
 import {useState} from "react";
 import React from "react";
 import CreateObjArray from "./components/CreateObjArray/CreateObjArray";
@@ -15,12 +14,14 @@ const App = () => {
         const boxCopy = boxes.map(box => {
             if (box.id === id && box.isItem === true) {
                 stopGame();
+                console.log(box);
                 return {
                     ...boxes,
                     box: 'item',
                 }
             } else if (box.id === id && box.isItem === false) {
                 counter();
+                console.log(box);
                 return {
                     ...boxes,
                     box: 'miss',
@@ -37,7 +38,8 @@ const App = () => {
     };
 
     const stopGame = () => {
-        alert('U have found item');
+        alert(`U have found item after ${count} tries. \nPut Reset to starting again`
+        );
     };
 
     const reset = () => {
@@ -53,7 +55,9 @@ const App = () => {
                     clickBox={clickBox}
                 />
             </div>
-            <Counter count={count}/>
+            <Counter
+                count={count}
+            />
             <Buttons
                 reset={reset}
             />
