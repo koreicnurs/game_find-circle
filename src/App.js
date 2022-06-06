@@ -5,6 +5,7 @@ import React from "react";
 import CreateObjArray from "./components/CreateObjArray/CreateObjArray";
 import Counter from "./components/Counter/Counter";
 import GameArea from "./components/GameArea/GameArea";
+import Buttons from "./components/Buttons/Buttons";
 
 const App = () => {
     const [boxes, setBoxes] = useState(CreateObjArray);
@@ -46,7 +47,6 @@ const App = () => {
 
     return (
         <>
-            <button onClick={reset}>Reset</button>
             <div className='boxes'>
                 <GameArea
                     boxes={boxes}
@@ -54,6 +54,9 @@ const App = () => {
                 />
             </div>
             <Counter count={count}/>
+            <Buttons
+                reset={reset}
+            />
         </>
 
     );
