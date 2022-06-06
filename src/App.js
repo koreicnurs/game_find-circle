@@ -3,6 +3,7 @@ import Box from "./components/Box/Box";
 import {useState} from "react";
 import React from "react";
 import GameArea from "./components/GameArea/GameArea";
+import Counter from "./components/Counter/Counter";
 
 const App = () => {
     const [boxes, setBoxes] = useState(GameArea);
@@ -11,42 +12,43 @@ const App = () => {
     const clickBox = (id) => {
         const boxCopy = boxes.map(box => {
             if (box.id === id && box.isItem === true) {
-                stopGame()
+                stopGame();
                 return {
                     ...boxes,
-                    box: 'item'
+                    box: 'item',
                 }
             } else if (box.id === id && box.isItem === false) {
-                counter()
+                counter();
                 return {
                     ...boxes,
                     box: 'miss',
                 }
             } else {
-                return box
+                return box;
             }
         })
-        setBoxes(boxCopy)
-    }
+        setBoxes(boxCopy);
+    };
+
     const counter = () => {
-        setCount(count + 1)
-    }
+        setCount(count + 1);
+    };
 
     const stopGame = () => {
-        alert('U have found item')
-    }
+        alert('U have found item');
+    };
 
     const boxesComp = boxes.map(box => (
         <Box
             name={box.box}
             eachBox={() => clickBox(box.id)}
         />
-    ))
+    ));
 
     const reset = () => {
-        setBoxes(GameArea())
-        setCount(0)
-    }
+        setBoxes(GameArea());
+        setCount(0);
+    };
 
     return (
         <>
@@ -54,10 +56,10 @@ const App = () => {
             <div className='boxes'>
                 {boxesComp}
             </div>
-            <p>{count}</p>
+            <Counter count={count}/>
         </>
 
-    )
+    );
 };
 
 export default App;
