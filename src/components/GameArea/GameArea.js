@@ -1,22 +1,13 @@
-import {nanoid} from "nanoid";
+import React from 'react';
+import Box from "../Box/Box";
 
-const GameArea = () => {
-    let objArrayBox = [];
-    for (let i = 0; i < 6; i++) {
-        for (let j = 0; j < 6; j++) {
-            objArrayBox.push({
-                box: 'box',
-                isItem: false,
-                id: nanoid(),
-            })
-        }
-    }
-    const rand = Math.floor((Math.random() * objArrayBox.length));
-    objArrayBox[rand].isItem = true;
-    console.log(rand);
-    return objArrayBox;
+const GameArea = (props) => {
+    return props.boxes.map(box => (
+            <Box
+                name={box.box}
+                eachBox={() => props.clickBox(box.id)}
+            />
+        ));
 };
-
-
 
 export default GameArea;

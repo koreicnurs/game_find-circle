@@ -2,11 +2,12 @@ import './App.css';
 import Box from "./components/Box/Box";
 import {useState} from "react";
 import React from "react";
-import GameArea from "./components/GameArea/GameArea";
+import CreateObjArray from "./components/CreateObjArray/CreateObjArray";
 import Counter from "./components/Counter/Counter";
+import GameArea from "./components/GameArea/GameArea";
 
 const App = () => {
-    const [boxes, setBoxes] = useState(GameArea);
+    const [boxes, setBoxes] = useState(CreateObjArray);
     const [count, setCount] = useState(0);
 
     const clickBox = (id) => {
@@ -38,15 +39,8 @@ const App = () => {
         alert('U have found item');
     };
 
-    const boxesComp = boxes.map(box => (
-        <Box
-            name={box.box}
-            eachBox={() => clickBox(box.id)}
-        />
-    ));
-
     const reset = () => {
-        setBoxes(GameArea());
+        setBoxes(CreateObjArray());
         setCount(0);
     };
 
@@ -54,7 +48,10 @@ const App = () => {
         <>
             <button onClick={reset}>Reset</button>
             <div className='boxes'>
-                {boxesComp}
+                <GameArea
+                    boxes={boxes}
+                    clickBox={clickBox}
+                />
             </div>
             <Counter count={count}/>
         </>
